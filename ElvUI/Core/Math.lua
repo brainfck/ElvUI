@@ -28,6 +28,7 @@ E.GetFormattedTextStyles = {
 	["CURRENT_PERCENT"] = "%s - %.1f%%",
 	["CURRENT_MAX_PERCENT"] = "%s - %s | %.1f%%",
 	["PERCENT"] = "%.1f%%",
+	["PERCENT_NO_FLOAT"]="%.f%%",
 	["DEFICIT"] = "-%s"
 }
 
@@ -193,11 +194,11 @@ function E:GetFormattedText(style, min, max, dec)
 			return (deficit > 0 and format(useStyle, E:ShortValue(deficit, dec))) or ""
 		elseif style == "CURRENT_MAX" then
 			return format(useStyle, E:ShortValue(min, dec), E:ShortValue(max, dec))
-		elseif style == "PERCENT" or style == "CURRENT_PERCENT" or style == "CURRENT_MAX_PERCENT" then
+		elseif style == "PERCENT" or style == "PERCENT_NO_FLOAT" or style == "CURRENT_PERCENT" or style == "CURRENT_MAX_PERCENT" then
 			if dec then useStyle = gsub(useStyle, "%d", tonumber(dec) or 0) end
 			local perc = min / max * 100
 
-			if style == "PERCENT" then
+			if style == "PERCENT" or style == "PERCENT_NO_FLOAT" then
 				return format(useStyle, perc)
 			elseif style == "CURRENT_PERCENT" then
 				return format(useStyle, E:ShortValue(min, dec), perc)

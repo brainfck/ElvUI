@@ -93,7 +93,10 @@ E.Media = {
 		Expressway = M..[[Fonts\Expressway.ttf]],
 		Homespun = M..[[Fonts\Homespun.ttf]],
 		Invisible = M..[[Fonts\Invisible.ttf]],
-		PTSansNarrow = M..[[Fonts\PTSansNarrow.ttf]]
+		PTSansNarrow = M..[[Fonts\PTSansNarrow.ttf]],
+		AvantGardeLT = M..[[Fonts\AvantGardeLT.ttf]],
+		GothamNarrowUltra = M..[[Fonts\GothamNarrowUltra.ttf]]
+
 	},
 	Sounds = {
 		AwwCrap = M..[[Sounds\AwwCrap.ogg]],
@@ -223,6 +226,8 @@ LSM:Register("font", "Die Die Die!", E.Media.Fonts.DieDieDie, LSM.LOCALE_BIT_ruR
 LSM:Register("font", "Action Man", E.Media.Fonts.ActionMan)
 LSM:Register("font", "Expressway", E.Media.Fonts.Expressway, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
 LSM:Register("font", "PT Sans Narrow", E.Media.Fonts.PTSansNarrow, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
+LSM:Register("font", "Avant Garde LT", E.Media.Fonts.AvantGardeLT, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
+LSM:Register("font", "Gotham Narrow Ultra", E.Media.Fonts.GothamNarrowUltra, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
 LSM:Register("font", "Homespun", E.Media.Fonts.Homespun, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
 LSM:Register("sound", "ElvUI Aska", E.Media.Sounds.SndIncMsg)
 LSM:Register("sound", "Awww Crap", E.Media.Sounds.AwwCrap)
