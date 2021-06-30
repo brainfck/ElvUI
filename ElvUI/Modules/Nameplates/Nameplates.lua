@@ -2,6 +2,7 @@ local E, L, V, P, G = unpack(select(2, ...)); --Import: Engine, Locales, Private
 local NP = E:GetModule("NamePlates")
 --local LSM = E.Libs.LSM
 local LAI = E.Libs.LAI
+local LSM = E.Libs.LSM
 
 --Lua functions
 local _G = _G
@@ -709,6 +710,8 @@ function NP:PlateFade(nameplate, timeToFade, startAlpha, endAlpha)
 end
 
 function NP:SetTargetFrame(frame)
+	local dbName = self.db.units[frame.UnitType].name
+	local dbHealth = self.db.units[frame.UnitType].health
 	if hasTarget and frame.alpha == 1 then
 		if not frame.isTarget then
 			frame.isTarget = true
@@ -718,6 +721,9 @@ function NP:SetTargetFrame(frame)
 			if self.db.useTargetScale then
 				self:SetFrameScale(frame, (frame.ThreatScale or 1) * self.db.targetScale)
 			end
+
+			frame.Name:FontTemplate(LSM:Fetch("font", dbName.font), dbName.fontSize + 2, dbName.fontOutline)
+			frame.Health.Text:FontTemplate(LSM:Fetch("font", dbHealth.text.font), dbHealth.text.fontSize + 2, dbHealth.text.fontOutline)
 
 			if not frame.isGroupUnit then
 				frame.unit = "target"
@@ -756,6 +762,9 @@ function NP:SetTargetFrame(frame)
 		if self.db.useTargetScale then
 			self:SetFrameScale(frame, (frame.ThreatScale or 1))
 		end
+
+		frame.Name:FontTemplate(LSM:Fetch("font", dbName.font), dbName.fontSize, dbName.fontOutline)
+		frame.Health.Text:FontTemplate(LSM:Fetch("font", dbHealth.text.font), dbHealth.text.fontSize, dbHealth.text.fontOutline)
 
 		if not frame.isGroupUnit then
 			frame.unit = nil
