@@ -127,7 +127,6 @@ function NP:SetAura(frame, guid, index, filter, isDebuff, visible)
 		button.caster = caster
 		button.filter = filter
 		button.isDebuff = isDebuff
-
 		local filterCheck = not frame.forceCreate
 		if not (frame.forceShow or frame.forceCreate) then
 			filterCheck = NP:AuraFilter(guid, button, name, texture, count, debuffType, duration, expiration, caster, spellID)
@@ -166,7 +165,7 @@ function NP:SetAura(frame, guid, index, filter, isDebuff, visible)
 				if button.name and (button.name == unstableAffliction or button.name == vampiricTouch) and E.myclass ~= "WARLOCK" then
 					self:StyleFrameColor(button, 0.05, 0.85, 0.94)
 				else
-					self:StyleFrameColor(button, color.r * 0.6, color.g * 0.6, color.b * 0.6)
+					self:StyleFrameColor(button, 0, 0, 0)
 				end
 			end
 
@@ -181,7 +180,7 @@ function NP:SetAura(frame, guid, index, filter, isDebuff, visible)
 	end
 end
 
-function NP:Update_AurasPosition(frame, db)
+function NP:Update_AurasPosition(frame, db, isDebuff)
 	local size = db.size + db.spacing
 	local anchor = E.InversePoints[db.anchorPoint]
 	local growthx = (db.growthX == "LEFT" and -1) or 1
@@ -194,8 +193,11 @@ function NP:Update_AurasPosition(frame, db)
 
 		local col = (i - 1) % cols
 		local row = floor((i - 1) / cols)
-
-		button:SetSize(db.size, db.size)
+		if isDebuff then
+			button:SetSize(db.size, db.size * 0.65)
+		else
+			button:SetSize(db.size, db.size)
+		end
 		button:ClearAllPoints()
 		button:SetPoint(anchor, frame, anchor, col * size * growthx, row * size * growthy)
 
@@ -292,7 +294,7 @@ function NP:UpdateElement_Auras(frame)
 		debuffs.visibleDebuffs = NP:UpdateElement_AuraIcons(debuffs, guid, debuffs.filter or "HARMFUL", db.perrow * db.numrows, true)
 
 		if #debuffs > debuffs.anchoredIcons then
-			self:Update_AurasPosition(debuffs, db)
+			self:Update_AurasPosition(debuffs, db, true)
 
 			debuffs.anchoredIcons = #debuffs
 		end
