@@ -161,11 +161,13 @@ function NP:SetAura(frame, guid, index, filter, isDebuff, visible)
 			button:Show()
 
 			if isDebuff then
+				--SetTexCoord to look like Naowh and not look so tight
 				button.icon:SetTexCoord(0.07, 0.93, 0.2, 0.8)
 				local color = (debuffType and DebuffTypeColor[debuffType]) or DebuffTypeColor.none
 				if button.name and (button.name == unstableAffliction or button.name == vampiricTouch) and E.myclass ~= "WARLOCK" then
 					self:StyleFrameColor(button, 0.05, 0.85, 0.94)
 				else
+					--Changhed the border color to black so it looks like NaowhUI
 					self:StyleFrameColor(button, 0, 0, 0)
 				end
 			end
@@ -347,6 +349,22 @@ function NP:Construct_AuraIcon(parent, index)
 
 	button.bg:SetPoint("TOPLEFT", button)
 	button.bg:SetPoint("BOTTOMRIGHT", button:GetStatusBarTexture(), "TOPRIGHT")
+
+	--Added Border to look like NaowhUI
+	if not button.oborder then
+		local border = CreateFrame("Frame", nil, button)
+		border:SetOutside(button, 2, 1)
+		border:SetFrameLevel(button:GetFrameLevel())
+		border:SetBackdrop({
+			bgFile = [[Interface/AddOns/nAuras/Media/BackgroundFlat]],
+			edgeFile = [[Interface/Buttons/WHITE8X8]],
+			edgeSize = 2,
+			insets = { left = 1, right = 1, top = 1, bottom = 1}
+		});
+
+		border:SetBackdropBorderColor(0, 0, 0, 1);
+		button.oborder = border
+	end
 
 	button.icon = button:CreateTexture(nil, "BORDER")
 	button.icon:SetTexCoord(unpack(E.TexCoords))
