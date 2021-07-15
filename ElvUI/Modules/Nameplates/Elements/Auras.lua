@@ -339,10 +339,10 @@ function NP:Construct_AuraIcon(parent, index)
 
 	local button = CreateFrame("StatusBar", "$parentButton"..index, parent)
 	NP:StyleFrame(button, true)
-
-	button:SetStatusBarTexture(E.media.blankTex)
-	button:SetStatusBarColor(0, 0, 0, 0)
-	button:SetOrientation("VERTICAL")
+	--removed because I already have the timer and it looks bad
+	--button:SetStatusBarTexture(E.media.blankTex)
+	--button:SetStatusBarColor(0, 0, 0, 0)
+	--button:SetOrientation("VERTICAL")
 
 	button.bg = button:CreateTexture()
 	button.bg:SetTexture(0, 0, 0, 0.5)
