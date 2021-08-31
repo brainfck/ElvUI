@@ -94,7 +94,7 @@ E.Media = {
 		Homespun = M..[[Fonts\Homespun.ttf]],
 		Invisible = M..[[Fonts\Invisible.ttf]],
 		PTSansNarrow = M..[[Fonts\PTSansNarrow.ttf]],
-		Naowh = M..[[Fonts\AvantGardeLT.ttf]],
+		Naowh = M..[[Fonts\Naowh.ttf]],
 		GothamNarrowUltra = M..[[Fonts\GothamNarrowUltra.ttf]]
 
 	},
@@ -192,7 +192,13 @@ E.Media = {
 		LevelUpTex = M..[[Textures\LevelUpTex.blp]],
 		Logo = M..[[Textures\Logo.tga]],
 		Mail = M..[[Textures\Mail.tga]],
+		BuiOnePixel = M..[[Textures\BuiOnePixel.tga]],
+		Bezo = M..[[Textures\Bezo.blp]],
+		BezoDark1 = M..[[Textures\Bezo-dark1.blp]],
+		BezoDark2 = M..[[Textures\Bezo-dark2.blp]],
 		Melli = M..[[Textures\Melli.tga]],
+		MelliDark = M..[[Textures\MelliDark.tga]],
+		MelliDarkRough = M..[[Textures\MelliDarkRough.tga]],
 		Minimalist = M..[[Textures\Minimalist.tga]],
 		Minus = M..[[Textures\Minus.tga]],
 		MinusButton = M..[[Textures\MinusButton.tga]],
@@ -221,12 +227,13 @@ E.Media = {
 }
 
 LSM:Register("border", "ElvUI GlowBorder", E.Media.Textures.GlowTex)
+LSM:Register("border", "ElvUI GlowNaowh", E.Media.Textures.GlowNaowh)
 LSM:Register("font", "Continuum Medium", E.Media.Fonts.ContinuumMedium)
 LSM:Register("font", "Die Die Die!", E.Media.Fonts.DieDieDie, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
 LSM:Register("font", "Action Man", E.Media.Fonts.ActionMan)
 LSM:Register("font", "Expressway", E.Media.Fonts.Expressway, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
 LSM:Register("font", "PT Sans Narrow", E.Media.Fonts.PTSansNarrow, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
-LSM:Register("font", "Naowh", E.Media.Fonts.AvantGardeLT, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
+LSM:Register("font", "Naowh", E.Media.Fonts.Naowh, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
 LSM:Register("font", "Gotham Narrow Ultra", E.Media.Fonts.GothamNarrowUltra, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
 LSM:Register("font", "Homespun", E.Media.Fonts.Homespun, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
 LSM:Register("sound", "ElvUI Aska", E.Media.Sounds.SndIncMsg)
@@ -239,7 +246,13 @@ LSM:Register("sound", "Runaway Fast", E.Media.Sounds.RunFast)
 LSM:Register("sound", "Stop Running", E.Media.Sounds.StopRunningSlimeBall)
 LSM:Register("sound", "Warning", E.Media.Sounds.Warning)
 LSM:Register("sound", "Whisper Alert", E.Media.Sounds.Whisper)
+LSM:Register("statusbar", "BuiOnePixel", E.Media.Textures.BuiOnePixel)
+LSM:Register("statusbar", "Bezo", E.Media.Textures.Bezo)
+LSM:Register("statusbar", "BezoDark1", E.Media.Textures.BezoDark1)
+LSM:Register("statusbar", "BezoDark2", E.Media.Textures.BezoDark2)
 LSM:Register("statusbar", "Melli", E.Media.Textures.Melli)
+LSM:Register("statusbar", "MelliDark", E.Media.Textures.MelliDark)
+LSM:Register("statusbar", "MelliDarkRough", E.Media.Textures.MelliDarkRough)
 LSM:Register("statusbar", "ElvUI Gloss", E.Media.Textures.NormTex)
 LSM:Register("statusbar", "ElvUI Norm", E.Media.Textures.NormTex2)
 LSM:Register("statusbar", "Minimalist", E.Media.Textures.Minimalist)
