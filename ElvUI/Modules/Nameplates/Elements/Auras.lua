@@ -356,7 +356,6 @@ function NP:Construct_AuraIcon(parent, index)
 		border:SetOutside(button, 2, 1)
 		border:SetFrameLevel(button:GetFrameLevel())
 		border:SetBackdrop({
-			bgFile = [[Interface/AddOns/nAuras/Media/BackgroundFlat]],
 			edgeFile = [[Interface/Buttons/WHITE8X8]],
 			edgeSize = 2,
 			insets = { left = 1, right = 1, top = 1, bottom = 1}

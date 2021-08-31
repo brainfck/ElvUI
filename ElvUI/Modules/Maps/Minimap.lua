@@ -474,7 +474,6 @@ function M:Initialize()
 	end
 
 	mmholder:SetBackdrop({
-		bgFile = [[Interface/AddOns/nAuras/Media/BackgroundFlat]],
 		edgeFile = [[Interface/Buttons/WHITE8X8]],
     	edgeSize = 2});
 	mmholder:SetBackdropBorderColor(0, 0, 0, 1);
