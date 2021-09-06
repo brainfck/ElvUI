@@ -75,13 +75,6 @@ local function getSpellNameWithUnit(spellName)
 		else
 			usedUnitColor = GetReactionColor(UnitReaction("target", "targettarget"))
 		end
-
-		if(UnitReaction("target", "targettarget") < 4) then
-			local selfName, _ = UnitName("target")
-			local _, selfClass, _ = UnitClass("target")
-			usedUnitColor = GetClassColor(selfClass)
-			usedUnitName = selfName
-		end
 	else
 		--use target name if target of target has not been found
 		--spell is casted on self target
