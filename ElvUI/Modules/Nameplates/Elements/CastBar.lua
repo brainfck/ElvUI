@@ -139,7 +139,7 @@ function NP:Update_CastBar(frame, event, unit)
 		castBar.notInterruptible = notInterruptible
 		castBar.holdTime = 0
 		castBar.interrupted = nil
-		castBar.spellName = getSpellNameWithUnit(name)
+		castBar.spellName = name
 
 		if castBar.casting then
 			castBar.value = GetTime() - startTime
@@ -152,7 +152,7 @@ function NP:Update_CastBar(frame, event, unit)
 
 		castBar.Icon.texture:SetTexture(texture)
 		castBar.Spark:Show()
-		castBar.Name:SetText(getSpellNameWithUnit(name))
+		castBar.Name:SetText(name)
 		castBar.Time:SetText()
 
 		castBar:Show()
@@ -201,7 +201,7 @@ function NP:Update_CastBar(frame, event, unit)
 			if delta < 0 then
 				delta = 0
 			end
-			castBar.Name:SetText(getSpellNameWithUnit(name))
+			castBar.Name:SetText(name)
 			castBar.max = endTime - startTime
 			castBar.startTime = startTime
 			castBar.delay = castBar.delay + delta
