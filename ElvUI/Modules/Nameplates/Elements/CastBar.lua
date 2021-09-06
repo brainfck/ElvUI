@@ -75,6 +75,13 @@ local function getSpellNameWithUnit(spellName)
 		else
 			usedUnitColor = GetReactionColor(UnitReaction("target", "targettarget"))
 		end
+
+		if(UnitReaction("target", "targettarget") < 4) then
+			local selfName, _ = UnitName("target")
+			local _, selfClass, _ = UnitClass("target")
+			usedUnitColor = GetClassColor(selfClass)
+			usedUnitName = selfName
+		end
 	else
 		--use target name if target of target has not been found
 		--spell is casted on self target
@@ -92,9 +99,9 @@ local function getSpellNameWithUnit(spellName)
 	if usedUnitName == nil then
 	else
 		--check if the unit name is bigger than 8 characters
-		if(string.len(usedUnitName) > 8) then
+		if(string.len(usedUnitName) > 5) then
 			--subscract only first 8 characters from the full name
-			usedUnitName = string.utf8sub(usedUnitName, 1, 8)
+			usedUnitName = string.utf8sub(usedUnitName, 1, 5)
 		end
 		--color the unitName by class
 		--combine the spell name and the unit name it is casted upon
