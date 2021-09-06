@@ -12,99 +12,11 @@ local UnitCastingInfo = UnitCastingInfo
 local UnitChannelInfo = UnitChannelInfo
 local FAILED = FAILED
 local INTERRUPTED = INTERRUPTED
-local CUSTOM_CLASS_COLORS = CUSTOM_CLASS_COLORS
-local RAID_CLASS_COLORS = RAID_CLASS_COLORS
 local function resetAttributes(self)
 	self.casting = nil
 	self.channeling = nil
 	self.notInterruptible = nil
 	self.spellName = nil
-end
-
-local function GetClassColor(className)
-	local classColor = "FFFFFF"
-	if className == "DEATHKNIGHT" then
-		classColor = "C41F3B"
-	elseif className == "DRUID" then
-		classColor = "FF7D0A"
-	elseif className == "HUNTER" then
-		classColor = "ABD473"
-	elseif className == "MAGE" then
-		classColor = "69CCF0"
-	elseif className == "PALADIN" then
-		classColor = "F58CBA"
-	elseif className == "PRIEST" then
-		classColor = "FFFFFF"
-	elseif className == "ROGUE" then
-		classColor = "FFF569"
-	elseif className == "SHAMAN" then
-		classColor = "0070DE"
-	elseif className == "WARLOCK" then
-		classColor = "9482C9"
-	elseif className == "WARRIOR" then
-		classColor = "C79C6E"
-	end
-
-	return classColor
-end
-
-local function GetReactionColor(reactionType)
-	local classColor = "FFFFFF"
-	if reactionType < 4 then
-		classColor = "FF0000"
-	elseif reactionType == 4 then
-		classColor = "E4E400"
-	elseif reactionType > 4 then
-		classColor = "5FE65D"
-	end
-	return classColor
-end
-
-local function getSpellNameWithUnit(spellName)
-	--get Target of Target Name
-	local unitName, realm = UnitName("targettarget")
-	local localizedClass, englishClass, classIndex = UnitClass("targettarget")
-	local unitSpellName = spellName
-	local usedUnitName = nil
-	local usedUnitColor = nil
-	--check if target of target has been found
-	if(unitName) then
-		usedUnitName = unitName
-		if(UnitIsPlayer("targettarget")) then
-			usedUnitColor = GetClassColor(englishClass)
-		else
-			usedUnitColor = GetReactionColor(UnitReaction("target", "targettarget"))
-		end
-	else
-		--use target name if target of target has not been found
-		--spell is casted on self target
-		local selfName, realm = UnitName("target")
-		local localizedClass, englishClass, classIndex = UnitClass("target")
-		usedUnitName = selfName
-		if(UnitIsPlayer("target")) then
-			usedUnitColor = GetClassColor(englishClass)
-		else
-			usedUnitColor = GetReactionColor(UnitReaction("target", "target"))
-		end
-	end
-
-	--check if we found any user unit name
-	if usedUnitName == nil then
-	else
-		--check if the unit name is bigger than 8 characters
-		if(string.len(usedUnitName) > 5) then
-			--subscract only first 8 characters from the full name
-			usedUnitName = string.utf8sub(usedUnitName, 1, 5)
-		end
-		--color the unitName by class
-		--combine the spell name and the unit name it is casted upon
-		if(string.len(unitSpellName) > 13) then
-			unitSpellName = string.utf8sub(unitSpellName, 1, 13)
-		end
-		unitSpellName = unitSpellName..' ('..string.format("|cff"..usedUnitColor.."%s|r",usedUnitName)..')'
-	end
-
-	return unitSpellName
 end
 
 function NP:Update_CastBarOnUpdate(elapsed)
