@@ -722,9 +722,6 @@ function NP:SetTargetFrame(frame)
 				self:SetFrameScale(frame, (frame.ThreatScale or 1) * self.db.targetScale)
 			end
 
-			frame.Name:FontTemplate(LSM:Fetch("font", dbName.font), dbName.fontSize + 2, dbName.fontOutline)
-			frame.Health.Text:FontTemplate(LSM:Fetch("font", dbHealth.text.font), dbHealth.text.fontSize + 2, dbHealth.text.fontOutline)
-
 			if not frame.isGroupUnit then
 				frame.unit = "target"
 				frame.guid = UnitGUID("target")
@@ -762,10 +759,7 @@ function NP:SetTargetFrame(frame)
 		if self.db.useTargetScale then
 			self:SetFrameScale(frame, (frame.ThreatScale or 1))
 		end
-
-		frame.Name:FontTemplate(LSM:Fetch("font", dbName.font), dbName.fontSize, dbName.fontOutline)
-		frame.Health.Text:FontTemplate(LSM:Fetch("font", dbHealth.text.font), dbHealth.text.fontSize, dbHealth.text.fontOutline)
-
+		
 		if not frame.isGroupUnit then
 			frame.unit = nil
 
