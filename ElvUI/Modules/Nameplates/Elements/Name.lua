@@ -22,7 +22,7 @@ local function abbrev(name)
 				if firstLetter ~= utf8lower(firstLetter) then
 					letters = format("%s%s. ", letters, firstLetter)
 				end
-				name = format("%s%s", letters, lastWord)
+				name = format("%s", lastWord)
 			end
 		end
 	end
@@ -42,7 +42,7 @@ function NP:Update_Name(frame, triggered)
 		name:ClearAllPoints()
 		if self.db.units[frame.UnitType].health.enable or (self.db.alwaysShowTargetHealth and frame.isTarget) then
 			name:SetJustifyH("LEFT")
-			name:SetPoint(E.InversePoints[self.db.units[frame.UnitType].name.position], self.db.units[frame.UnitType].name.parent == "Nameplate" and frame or frame[self.db.units[frame.UnitType].name.parent], self.db.units[frame.UnitType].name.position, self.db.units[frame.UnitType].name.xOffset, self.db.units[frame.UnitType].name.yOffset)
+			name:SetPoint(E.InversePoints[self.db.units[frame.UnitType].name.position], self.db.units[frame.UnitType].name.parent == "Nameplate" and frame or frame[self.db.units[frame.UnitType].name.parent], self.db.units[frame.UnitType].name.position, self.db.units[frame.UnitType].name.xOffset, self.db.units[frame.UnitType].name.yOffset-1)
 			name:SetParent(frame.Health)
 		else
 			name:SetJustifyH("CENTER")

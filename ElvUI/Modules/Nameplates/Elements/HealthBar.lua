@@ -117,7 +117,8 @@ function NP:Update_Health(frame)
 	frame.Health:SetValue(health)
 	frame.FlashTexture:Point("TOPRIGHT", frame.Health:GetStatusBarTexture(), "TOPRIGHT") --idk why this fixes this
 
-	if self.db.units[frame.UnitType].health.enable and self.db.units[frame.UnitType].health.text.enable then
+	local hpFont = LSM:Fetch("font", self.db.units[frame.UnitType].health);
+	if self.db.units[frame.UnitType].health.enable or (frame.isTarget and self.db.alwaysShowTargetHealth) and self.db.units[frame.UnitType].health.text.enable and hpFont then
 		frame.Health.Text:SetText(E:GetFormattedText(self.db.units[frame.UnitType].health.text.format, health, maxHealth))
 	end
 end
@@ -145,7 +146,7 @@ end
 function NP:Configure_HealthBarScale(frame, scale, noPlayAnimation)
 	if noPlayAnimation then
 		frame.Health:SetWidth(self.db.units[frame.UnitType].health.width * scale)
-		frame.Health:SetHeight(self.db.units[frame.UnitType].health.height * scale)
+		frame.Health:SetHeight((self.db.units[frame.UnitType].health.height * scale))
 	else
 		if frame.Health.scale:IsPlaying() then
 			frame.Health.scale:Stop()

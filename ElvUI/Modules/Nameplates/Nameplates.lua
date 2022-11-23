@@ -1,8 +1,7 @@
 local E, L, V, P, G = unpack(select(2, ...)); --Import: Engine, Locales, PrivateDB, ProfileDB, GlobalDB
 local NP = E:GetModule("NamePlates")
---local LSM = E.Libs.LSM
-local LAI = E.Libs.LAI
 local LSM = E.Libs.LSM
+local LAI = E.Libs.LAI
 
 --Lua functions
 local _G = _G
@@ -616,7 +615,7 @@ function NP:OnCreated(frame)
 	unitFrame.oldLevel = Level
 
 	unitFrame.Threat = Threat
-	RaidIcon:SetParent(unitFrame)
+	RaidIcon:SetParent(unitFrame.Health)
 	unitFrame.RaidIcon = RaidIcon
 
 	unitFrame.BossIcon = BossIcon
@@ -709,9 +708,36 @@ function NP:PlateFade(nameplate, timeToFade, startAlpha, endAlpha)
 	end
 end
 
+function NP:ScaleNameAndHealthText(frame, isTarget)
+	local dbName = self.db.units[frame.UnitType].name;
+	local dbHealth = self.db.units[frame.UnitType].health;
+	local nameFont = LSM:Fetch("font", dbName.font);
+	local hpFont = LSM:Fetch("font", dbHealth.text.font);
+
+	if isTarget then 
+		frame.Name:FontTemplate(nameFont, dbName.fontSize + 2, dbName.fontOutline)
+		frame.Health.Text:FontTemplate(hpFont, dbHealth.text.fontSize + 2, dbHealth.text.fontOutline)
+	else
+		frame.Name:FontTemplate(nameFont, dbName.fontSize, dbName.fontOutline)
+		frame.Health.Text:FontTemplate(hpFont, dbHealth.text.fontSize, dbHealth.text.fontOutline)
+	end
+end
+
+function NP:RepositionNameAndHealthText(frame, isTarget)
+	local dbName = self.db.units[frame.UnitType].name;
+	local dbHealth = self.db.units[frame.UnitType].health;
+	
+	if isTarget then
+	frame.Name:Point(E.InversePoints[dbName.position], dbName.parent == "Nameplate" and frame or frame[dbName.parent], dbName.position, dbName.xOffset, dbName.yOffset - 1);
+	frame.Health.Text:Point(E.InversePoints[dbHealth.text.position], dbHealth.text.parent == "Nameplate" and frame or frame[dbHealth.text.parent], dbHealth.text.position, dbHealth.text.xOffset, dbHealth.text.yOffset - 1);
+	else
+		frame.Name:Point(E.InversePoints[dbName.position], dbName.parent == "Nameplate" and frame or frame[dbName.parent], dbName.position, dbName.xOffset, dbName.yOffset);
+		frame.Health.Text:Point(E.InversePoints[dbHealth.text.position], dbHealth.text.parent == "Nameplate" and frame or frame[dbHealth.text.parent], dbHealth.text.position, dbHealth.text.xOffset, dbHealth.text.yOffset);
+	end
+end
+
 function NP:SetTargetFrame(frame)
-	local dbName = self.db.units[frame.UnitType].name
-	local dbHealth = self.db.units[frame.UnitType].health
+
 	if hasTarget and frame.alpha == 1 then
 		if not frame.isTarget then
 			frame.isTarget = true
@@ -721,6 +747,9 @@ function NP:SetTargetFrame(frame)
 			if self.db.useTargetScale then
 				self:SetFrameScale(frame, (frame.ThreatScale or 1) * self.db.targetScale)
 			end
+        
+			NP:ScaleNameAndHealthText(frame, frame.isTarget);
+			NP:RepositionNameAndHealthText(frame, frame.isTarget);
 
 			if not frame.isGroupUnit then
 				frame.unit = "target"
@@ -733,7 +762,7 @@ function NP:SetTargetFrame(frame)
 
 			if not self.db.units[frame.UnitType].health.enable and self.db.alwaysShowTargetHealth then
 				frame.Health.r, frame.Health.g, frame.Health.b = nil, nil, nil
-
+	
 				self:Configure_HealthBar(frame)
 				self:Configure_CastBar(frame)
 				self:Configure_Elite(frame)
@@ -741,13 +770,16 @@ function NP:SetTargetFrame(frame)
 
 				self:RegisterEvents(frame)
 
-				self:UpdateElement_All(frame, true)
+				self:UpdateElement_All(frame, true)	
 			end
 
 			NP:PlateFade(frame, NP.db.fadeIn and 1 or 0, frame:GetAlpha(), 1)
 
 			self:Update_Highlight(frame)
 			self:Update_CPoints(frame)
+
+
+
 			self:StyleFilterUpdate(frame, "PLAYER_TARGET_CHANGED")
 			self:ForEachVisiblePlate("ResetNameplateFrameLevel") --keep this after `StyleFilterUpdate`
 		end
@@ -759,7 +791,19 @@ function NP:SetTargetFrame(frame)
 		if self.db.useTargetScale then
 			self:SetFrameScale(frame, (frame.ThreatScale or 1))
 		end
-		
+
+
+		if self.db.units[frame.UnitType].health.enable then
+			NP:ScaleNameAndHealthText(frame, frame.isTarget);
+			NP:RepositionNameAndHealthText(frame, frame.isTarget);
+		else
+			NP:ScaleNameAndHealthText(frame, frame.isTarget);
+			frame.Name:SetJustifyH("CENTER")
+			frame.Name:SetPoint("TOP", frame)
+			frame.Name:SetParent(frame)
+		end
+
+
 		if not frame.isGroupUnit then
 			frame.unit = nil
 
@@ -786,6 +830,15 @@ function NP:SetTargetFrame(frame)
 		self:StyleFilterUpdate(frame, "PLAYER_TARGET_CHANGED")
 		self:ForEachVisiblePlate("ResetNameplateFrameLevel") --keep this after `StyleFilterUpdate`
 	else
+		if self.db.units[frame.UnitType].health.enable then
+			NP:ScaleNameAndHealthText(frame, frame.isTarget);
+			NP:RepositionNameAndHealthText(frame, frame.isTarget);
+		else
+			NP:ScaleNameAndHealthText(frame, frame.isTarget);
+			frame.Name:SetJustifyH("CENTER")
+			frame.Name:SetPoint("TOP", frame)
+			frame.Name:SetParent(frame)
+		end
 		if hasTarget and not frame.isAlphaChanged then
 			frame.isAlphaChanged = true
 

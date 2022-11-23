@@ -72,8 +72,8 @@ function UF:Construct_AuraIcon(button)
 	button.icon:SetDrawLayer("ARTWORK")
 
 	button.count:ClearAllPoints()
-	button.count:Point("BOTTOMRIGHT", 1, 1)
-	button.count:SetJustifyH("RIGHT")
+	button.count:Point("TOP", 0, 6)
+	button.count:SetJustifyH("CENTER")
 
 	button.overlay:SetTexture()
 	button.stealable:SetTexture()
@@ -125,7 +125,7 @@ function UF:UpdateAuraCooldownPosition(button)
 	button.cd.timer.text:ClearAllPoints()
 	local point = (button.db and button.db.durationPosition) or "CENTER"
 	if point == "CENTER" then
-		button.cd.timer.text:Point(point, 1, 0)
+		button.cd.timer.text:Point(point, 0, -9)
 	else
 		local bottom, right = find(point, "BOTTOM"), find(point, "RIGHT")
 		button.cd.timer.text:Point(point, right and -1 or 1, bottom and 1 or -1)
@@ -380,6 +380,10 @@ function UF:PostUpdateAura(unit, button)
 	if button.needsUpdateCooldownPosition and (button.cd and button.cd.timer and button.cd.timer.text) then
 		UF:UpdateAuraCooldownPosition(button)
 	end
+
+	button.icon:SetTexCoord(0.07, 0.93, 0.2, 0.8)
+	local auras = button:GetParent();
+	button:SetHeight(((auras and auras.size) or 30) * 0.72)
 end
 
 function UF:AuraFilter(unit, button, name, _, _, _, debuffType, duration, expiration, caster, isStealable, _, spellID)
