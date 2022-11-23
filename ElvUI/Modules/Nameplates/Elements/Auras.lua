@@ -197,7 +197,7 @@ function NP:Update_AurasPosition(frame, db, isDebuff)
 
 		local col = (i - 1) % cols
 		local row = floor((i - 1) / cols)
-		button:SetSize(db.size, db.size * 0.6)
+		button:SetSize(db.size, db.size * 0.66)
 		button:ClearAllPoints()
 		button:SetPoint(anchor, frame, anchor, col * size * growthx, row * size * growthy)
 
@@ -350,7 +350,7 @@ function NP:Construct_AuraIcon(parent, index)
 	if not button.oborder then
 		local border = CreateFrame("Frame", nil, button)
 		border:SetOutside(button, 1, 1)
-		border:SetFrameLevel(button:GetFrameLevel() - 1)
+		border:SetFrameLevel(button:GetFrameLevel())
 		border:SetBackdrop({
 			edgeFile = [[Interface/Buttons/WHITE8X8]],
 			edgeSize = 1.2
