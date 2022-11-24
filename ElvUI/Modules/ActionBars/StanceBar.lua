@@ -66,6 +66,7 @@ function AB:StyleShapeShift()
 			else
 				cooldown:SetAlpha(0)
 			end
+			icon:SetTexCoord(0.07, 0.93, 0.2, 0.8)
 
 			if isActive then
 				button:GetCheckedTexture():SetTexture(1, 1, 1, 0.5)
@@ -90,7 +91,6 @@ function AB:StyleShapeShift()
 			end
 
 			icon:SetTexture(texture)
-
 			if isCastable then
 				icon:SetVertexColor(1.0, 1.0, 1.0)
 			else
@@ -199,7 +199,7 @@ function AB:PositionAndSizeBarShapeShift()
 
 		button:SetParent(bar)
 		button:ClearAllPoints()
-		button:Size(size)
+		button:Size(size, size * 0.72)
 
 		if self.db.stanceBar.mouseover then
 			bar:SetAlpha(0)

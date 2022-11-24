@@ -329,7 +329,7 @@ function A:ConfigureAuras(header, auraTable, weaponPosition)
 			button:SetBackdropBorderColor(cr, cg, cb)
 			button.statusBar.backdrop:SetBackdropBorderColor(cr, cg, cb)
 		end
-
+		button.texture:SetTexCoord(0.07, 0.93, 0.2, 0.8)
 		button.texture:SetTexture(buffInfo.icon)
 
 		buttons[i] = button
@@ -416,7 +416,7 @@ function A:ConfigureAuras(header, auraTable, weaponPosition)
 		button:ClearAllPoints()
 		button:SetPoint(point, header, cycle * wrapXOffset + tick * xOffset, cycle * wrapYOffset + tick * yOffset)
 
-		button:SetSize(size, size)
+		button:SetSize(size, size * 0.72)
 
 		if button.text then
 			local font = LSM:Fetch("font", self.db.font)

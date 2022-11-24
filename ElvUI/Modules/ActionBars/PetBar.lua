@@ -89,6 +89,9 @@ function AB:UpdatePet(event, unit)
 			SetDesaturation(icon, 1)
 			button:SetChecked(0)
 		end
+
+		icon:SetTexCoord(0.07, 0.93, 0.2, 0.8)
+
 	end
 end
 
@@ -180,7 +183,7 @@ function AB:PositionAndSizeBarPet()
 
 		button:SetParent(bar)
 		button:ClearAllPoints()
-		button:Size(size)
+		button:Size(size, size * 0.72)
 		autoCast:SetOutside(button, autoCastSize, autoCastSize)
 		shine:Size(size - E.Border*2)
 		button:SetAttribute("showgrid", 1)
