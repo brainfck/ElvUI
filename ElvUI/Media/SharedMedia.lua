@@ -94,8 +94,15 @@ E.Media = {
 		Homespun = M..[[Fonts\Homespun.ttf]],
 		Invisible = M..[[Fonts\Invisible.ttf]],
 		PTSansNarrow = M..[[Fonts\PTSansNarrow.ttf]],
-		Naowh = M..[[Fonts\Naowh.ttf]],
-		GothamNarrowUltra = M..[[Fonts\GothamNarrowUltra.ttf]]
+		MontserratBlack = M..[[Fonts\MontserratBlack.ttf]],
+		MontserratBold = M..[[Fonts\MontserratBold.ttf]],
+		MontserratExtraBold = M..[[Fonts\MontserratExtraBold.ttf]],
+		MontserratExtraLight = M..[[Fonts\MontserratExtraLight.ttf]],
+		MontserratLight = M..[[Fonts\MontserratLight.ttf]],
+		MontserratMedium = M..[[Fonts\MontserratMedium.ttf]],
+		MontserratRegular = M..[[Fonts\MontserratRegular.ttf]],
+		MontserratSemiBold = M..[[Fonts\MontserratSemiBold.ttf]],
+		MontserratThin = M..[[Fonts\MontserratThin.ttf]]
 	},
 	Sounds = {
 		AwwCrap = M..[[Sounds\AwwCrap.ogg]],
@@ -163,6 +170,16 @@ E.Media = {
 		Rainbow = M..[[ChatLogos\Rainbow.tga]],
 		TyroneBiggums = M..[[ChatLogos\TyroneBiggums.tga]]
 	},
+	ToxiTextures = {
+		MaterialCombat = M..[[States\MaterialCombat.blp]],
+		MaterialDC = M..[[States\MaterialDC.blp]],
+		MaterialDead = M..[[States\MaterialDead.blp]],
+		MaterialResting = M..[[States\MaterialResting.blp]],
+		MaterialDPS = M..[[Roles\MaterialDPS.blp]],
+		MaterialHealer = M..[[Roles\MaterialHealer.blp]],
+		MaterialTank = M..[[Roles\MaterialTank.blp]],
+		Quest = M..[[Icons\Quest.tga]]
+	},
 	Textures = {
 		AllianceLogo = M..[[Textures\Alliance-Logo.blp]],
 		Arrow = M..[[Textures\Arrow.tga]],
@@ -191,10 +208,6 @@ E.Media = {
 		LevelUpTex = M..[[Textures\LevelUpTex.blp]],
 		Logo = M..[[Textures\Logo.tga]],
 		Mail = M..[[Textures\Mail.tga]],
-		BuiOnePixel = M..[[Textures\BuiOnePixel.tga]],
-		Bezo = M..[[Textures\Bezo.blp]],
-		BezoDark1 = M..[[Textures\Bezo-dark1.blp]],
-		BezoDark2 = M..[[Textures\Bezo-dark2.blp]],
 		Melli = M..[[Textures\Melli.tga]],
 		MelliDark = M..[[Textures\MelliDark.tga]],
 		MelliDarkRough = M..[[Textures\MelliDarkRough.tga]],
@@ -232,7 +245,15 @@ LSM:Register("font", "Die Die Die!", E.Media.Fonts.DieDieDie, LSM.LOCALE_BIT_ruR
 LSM:Register("font", "Action Man", E.Media.Fonts.ActionMan)
 LSM:Register("font", "Expressway", E.Media.Fonts.Expressway, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
 LSM:Register("font", "PT Sans Narrow", E.Media.Fonts.PTSansNarrow, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
-LSM:Register("font", "Homespun", E.Media.Fonts.Homespun, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
+LSM:Register("font", "MontserratBlack", E.Media.Fonts.MontserratBlack, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
+LSM:Register("font", "MontserratBold", E.Media.Fonts.MontserratBold, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
+LSM:Register("font", "MontserratExtraBold", E.Media.Fonts.MontserratExtraBold, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
+LSM:Register("font", "MontserratExtraLight", E.Media.Fonts.MontserratExtraLight, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
+LSM:Register("font", "MontserratLight", E.Media.Fonts.MontserratLight, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
+LSM:Register("font", "MontserratMedium", E.Media.Fonts.MontserratMedium, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
+LSM:Register("font", "MontserratRegular", E.Media.Fonts.MontserratRegular, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
+LSM:Register("font", "MontserratSemiBold", E.Media.Fonts.MontserratSemiBold, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
+LSM:Register("font", "MontserratThin", E.Media.Fonts.MontserratThin, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
 LSM:Register("sound", "ElvUI Aska", E.Media.Sounds.SndIncMsg)
 LSM:Register("sound", "Awww Crap", E.Media.Sounds.AwwCrap)
 LSM:Register("sound", "BBQ Ass", E.Media.Sounds.BbqAss)
@@ -243,10 +264,6 @@ LSM:Register("sound", "Runaway Fast", E.Media.Sounds.RunFast)
 LSM:Register("sound", "Stop Running", E.Media.Sounds.StopRunningSlimeBall)
 LSM:Register("sound", "Warning", E.Media.Sounds.Warning)
 LSM:Register("sound", "Whisper Alert", E.Media.Sounds.Whisper)
-LSM:Register("statusbar", "BuiOnePixel", E.Media.Textures.BuiOnePixel)
-LSM:Register("statusbar", "Bezo", E.Media.Textures.Bezo)
-LSM:Register("statusbar", "BezoDark1", E.Media.Textures.BezoDark1)
-LSM:Register("statusbar", "BezoDark2", E.Media.Textures.BezoDark2)
 LSM:Register("statusbar", "ElvUI Gloss", E.Media.Textures.NormTex)
 LSM:Register("statusbar", "ElvUI Norm", E.Media.Textures.NormTex2)
 LSM:Register("statusbar", "Minimalist", E.Media.Textures.Minimalist)

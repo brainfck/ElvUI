@@ -7,7 +7,8 @@ local UF = E:GetModule("UnitFrames")
 local RestingTextures = {
 	["DEFAULT"] = [[Interface\CharacterFrame\UI-StateIcon]],
 	["RESTING"] = E.Media.Textures.Resting,
-	["RESTING1"] = E.Media.Textures.Resting1
+	["RESTING1"] = E.Media.Textures.Resting1,
+	["TOXIRESTING"] = E.Media.ToxiTextures.MaterialResting
 }
 
 function UF:Construct_RestingIndicator(frame)

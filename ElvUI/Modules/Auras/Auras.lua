@@ -195,7 +195,7 @@ function A:CreateIcon(button)
 			Count = false,
 			Name = nil,
 			Highlight = button.highlight
-		}
+		};
 
 		(self.LBFGroup or self.MSQGroup):AddButton(button, ButtonData)
 	else
