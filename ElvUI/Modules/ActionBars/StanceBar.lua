@@ -47,7 +47,7 @@ function AB:StyleShapeShift()
 		button = _G[buttonName]
 		icon = _G[buttonName.."Icon"]
 		cooldown = _G[buttonName.."Cooldown"]
-
+		icon:SetTexCoord(0.07, 0.93, 0.2, 0.8)
 		if i <= numForms then
 			texture, name, isActive, isCastable = GetShapeshiftFormInfo(i)
 
@@ -66,7 +66,6 @@ function AB:StyleShapeShift()
 			else
 				cooldown:SetAlpha(0)
 			end
-			icon:SetTexCoord(0.07, 0.93, 0.2, 0.8)
 
 			if isActive then
 				button:GetCheckedTexture():SetTexture(1, 1, 1, 0.5)
@@ -96,6 +95,7 @@ function AB:StyleShapeShift()
 			else
 				icon:SetVertexColor(0.4, 0.4, 0.4)
 			end
+			icon:SetTexCoord(0.07, 0.93, 0.2, 0.8)
 		end
 	end
 end
