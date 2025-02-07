@@ -308,45 +308,33 @@ end
 
 function SynastriaCoreLib.generateItemLink(itemIdOrLink, suffixId, name, color)
     local itemId, propertySeed, ownerLevel
+
     if type(itemIdOrLink) == 'number' then
-        itemId = itemIdOrLink
+        itemId = itemIdOrLink or 0
     elseif type(itemIdOrLink) == 'string' then
-        itemId = SynastriaCoreLib.parseItemId(itemIdOrLink)
-        if suffixId == nil then
-            suffixId = SynastriaCoreLib.parseSuffixId(itemIdOrLink, 0)
-        end
-
-        if name == nil then
-            name = SynastriaCoreLib.parseItemName(itemIdOrLink, SCL_DEFAULT_ITEM_NAME)
-        end
-
-        if color == nil then
-            color = SynastriaCoreLib.parseItemColor(itemIdOrLink)
-        end
-
-        if propertySeed == nil then
-            propertySeed = SynastriaCoreLib.parsePropertySeed(itemIdOrLink)
-        end
-
-        if ownerLevel == nil then
-            ownerLevel = SynastriaCoreLib.parseOwnerLevel(itemIdOrLink, SCL_DEFAULT_ITEM_OWNER_LEVEL)
-        end
+        itemId = SynastriaCoreLib.parseItemId(itemIdOrLink) or 0
+        suffixId = suffixId or SynastriaCoreLib.parseSuffixId(itemIdOrLink, 0)
+        name = name or SynastriaCoreLib.parseItemName(itemIdOrLink, SCL_DEFAULT_ITEM_NAME)
+        color = color or SynastriaCoreLib.parseItemColor(itemIdOrLink)
+        propertySeed = SynastriaCoreLib.parsePropertySeed(itemIdOrLink)
+        ownerLevel = SynastriaCoreLib.parseOwnerLevel(itemIdOrLink, SCL_DEFAULT_ITEM_OWNER_LEVEL)
     else
         return 'ERR'
     end
+
+    -- Assign defaults where necessary
     color = color or SCL_DEFAULT_ITEM_COLOR
     name = name or SCL_DEFAULT_ITEM_NAME
     ownerLevel = ownerLevel or SCL_DEFAULT_ITEM_OWNER_LEVEL
     suffixId = suffixId or 0
     propertySeed = propertySeed or 0
 
-    local ench1 = 0
-    local ench2 = 0
-    local ench3 = 0
-    local ench4 = 0
+    -- Enchantment slots and socket bonus
+    local ench1, ench2, ench3, ench4 = 0, 0, 0, 0
     local socketBonus = 0
 
-    return ('|cff%s|Hitem:%d:%d:%d:%d:%d:%d:%d:%d:%d|h[%s]|h|r'):format(color, itemId, ench1, ench2, ench3, ench4, socketBonus, suffixId, propertySeed, ownerLevel, name)
+    return ('|cff%s|Hitem:%d:%d:%d:%d:%d:%d:%d:%d:%d|h[%s]|h|r')
+        :format(color, itemId, ench1, ench2, ench3, ench4, socketBonus, suffixId, propertySeed, ownerLevel, name)
 end
 
 function SynastriaCoreLib.parseItemIdAndLink(itemIdOrLink, suffixId)
