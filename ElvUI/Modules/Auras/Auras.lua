@@ -329,7 +329,6 @@ function A:ConfigureAuras(header, auraTable, weaponPosition)
 			button:SetBackdropBorderColor(cr, cg, cb)
 			button.statusBar.backdrop:SetBackdropBorderColor(cr, cg, cb)
 		end
-		button.texture:SetTexCoord(0.07, 0.93, 0.2, 0.8)
 		button.texture:SetTexture(buffInfo.icon)
 
 		buttons[i] = button
