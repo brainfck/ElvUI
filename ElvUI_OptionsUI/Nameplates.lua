@@ -1972,6 +1972,7 @@ local function GetUnitSettings(unit, name)
 									["CURRENT_PERCENT"] = L["Current - Percent"],
 									["CURRENT_MAX_PERCENT"] = L["Current - Max | Percent"],
 									["PERCENT"] = L["Percent"],
+									["PERCENT_NO_FLOAT"]=L["No Float %"],
 									["DEFICIT"] = L["Deficit"]
 								}
 							},

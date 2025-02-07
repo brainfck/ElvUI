@@ -481,6 +481,11 @@ function M:Initialize()
 		Minimap.location:Hide()
 	end
 
+	mmholder:SetBackdrop({
+		edgeFile = [[Interface/Buttons/WHITE8X8]],
+    	edgeSize = 2});
+	mmholder:SetBackdropBorderColor(0, 0, 0, 1);
+
 	MinimapBorder:Hide()
 	MinimapBorderTop:Hide()
 	MinimapZoomIn:Hide()

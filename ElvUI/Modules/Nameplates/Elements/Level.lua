@@ -5,6 +5,10 @@ local LSM = E.Libs.LSM
 --Lua functions
 --WoW API / Variables
 
+local function isempty(s)
+	return s == nil or s == ''
+  end
+
 function NP:Update_Level(frame)
 	if not self.db.units[frame.UnitType].level.enable then return end
 
@@ -17,7 +21,12 @@ function NP:Update_Level(frame)
 		level:SetJustifyH("RIGHT")
 		level:SetPoint(E.InversePoints[self.db.units[frame.UnitType].level.position], self.db.units[frame.UnitType].level.parent == "Nameplate" and frame or frame[self.db.units[frame.UnitType].level.parent], self.db.units[frame.UnitType].level.position, self.db.units[frame.UnitType].level.xOffset, self.db.units[frame.UnitType].level.yOffset)
 		level:SetParent(frame.Health)
-		level:SetText(levelText)
+		if not isempty(levelText) and type(levelText)=="number" and levelText >= 10 then
+			level:SetText(levelText)
+		elseif type(levelText)=="string" then
+		else
+			level:SetText("  "..levelText)
+		end
 	else
 		if self.db.units[frame.UnitType].name.enable then
 			level:SetPoint("LEFT", frame.Name, "RIGHT")

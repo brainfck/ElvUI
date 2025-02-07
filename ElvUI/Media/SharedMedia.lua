@@ -87,13 +87,22 @@ E.Media = {
 		RLArrow = M .. [[Arrows\RLArrow.tga]]
 	},
 	Fonts = {
-		ActionMan = M .. [[Fonts\ActionMan.ttf]],
-		ContinuumMedium = M .. [[Fonts\ContinuumMedium.ttf]],
-		DieDieDie = M .. [[Fonts\DieDieDie.ttf]],
-		Expressway = M .. [[Fonts\Expressway.ttf]],
-		Homespun = M .. [[Fonts\Homespun.ttf]],
-		Invisible = M .. [[Fonts\Invisible.ttf]],
-		PTSansNarrow = M .. [[Fonts\PTSansNarrow.ttf]]
+		ActionMan = M..[[Fonts\ActionMan.ttf]],
+		ContinuumMedium = M..[[Fonts\ContinuumMedium.ttf]],
+		DieDieDie = M..[[Fonts\DieDieDie.ttf]],
+		Expressway = M..[[Fonts\Expressway.ttf]],
+		Homespun = M..[[Fonts\Homespun.ttf]],
+		Invisible = M..[[Fonts\Invisible.ttf]],
+		PTSansNarrow = M..[[Fonts\PTSansNarrow.ttf]],
+		MontserratBlack = M..[[Fonts\MontserratBlack.ttf]],
+		MontserratBold = M..[[Fonts\MontserratBold.ttf]],
+		MontserratExtraBold = M..[[Fonts\MontserratExtraBold.ttf]],
+		MontserratExtraLight = M..[[Fonts\MontserratExtraLight.ttf]],
+		MontserratLight = M..[[Fonts\MontserratLight.ttf]],
+		MontserratMedium = M..[[Fonts\MontserratMedium.ttf]],
+		MontserratRegular = M..[[Fonts\MontserratRegular.ttf]],
+		MontserratSemiBold = M..[[Fonts\MontserratSemiBold.ttf]],
+		MontserratThin = M..[[Fonts\MontserratThin.ttf]]
 	},
 	Sounds = {
 		AwwCrap = M .. [[Sounds\AwwCrap.ogg]],
@@ -161,6 +170,16 @@ E.Media = {
 		Rainbow = M .. [[ChatLogos\Rainbow.tga]],
 		TyroneBiggums = M .. [[ChatLogos\TyroneBiggums.tga]]
 	},
+	ToxiTextures = {
+		MaterialCombat = M..[[States\MaterialCombat.blp]],
+		MaterialDC = M..[[States\MaterialDC.blp]],
+		MaterialDead = M..[[States\MaterialDead.blp]],
+		MaterialResting = M..[[States\MaterialResting.blp]],
+		MaterialDPS = M..[[Roles\MaterialDPS.blp]],
+		MaterialHealer = M..[[Roles\MaterialHealer.blp]],
+		MaterialTank = M..[[Roles\MaterialTank.blp]],
+		Quest = M..[[Icons\Quest.tga]]
+	},
 	Textures = {
 		AllianceLogo = M .. [[Textures\Alliance-Logo.blp]],
 		AttuneIconWhite = M .. [[Textures\AttuneIconWhite.tga]],
@@ -171,60 +190,71 @@ E.Media = {
 		BagQuestIcon = M .. [[Textures\BagQuestIcon.tga]],
 		Black8x8 = M .. [[Textures\Black8x8.tga]],
 		White8x8 = [[Interface\BUTTONS\WHITE8X8]], -- not elvui
-		Broom = M .. [[Textures\Broom.blp]],
-		ChatEmojis = M .. [[Textures\ChatEmojis]],
-		ChatLogos = M .. [[Textures\ChatLogos]],
-		Close = M .. [[Textures\Close.tga]],
-		Combat = M .. [[Textures\Combat.tga]],
-		Copy = M .. [[Textures\Copy.tga]],
-		Cross = M .. [[Textures\Cross.tga]],
-		DPS = M .. [[Textures\DPS.tga]],
-		ExitVehicle = M .. [[Textures\ExitVehicle.tga]],
-		GlowTex = M .. [[Textures\GlowTex.tga]],
-		Healer = M .. [[Textures\Healer.tga]],
-		HelloKitty = M .. [[Textures\HelloKitty.tga]],
-		HelloKittyChat = M .. [[Textures\HelloKittyChat.tga]],
-		Highlight = M .. [[Textures\Highlight.tga]],
-		HordeLogo = M .. [[Textures\Horde-Logo.blp]],
-		Leader = M .. [[Textures\Leader.tga]],
-		LevelUpTex = M .. [[Textures\LevelUpTex.blp]],
-		Logo = M .. [[Textures\Logo.tga]],
-		Mail = M .. [[Textures\Mail.tga]],
-		Melli = M .. [[Textures\Melli.tga]],
-		Minimalist = M .. [[Textures\Minimalist.tga]],
-		Minus = M .. [[Textures\Minus.tga]],
-		MinusButton = M .. [[Textures\MinusButton.tga]],
-		Nameplates = M .. [[Textures\Nameplates.blp]],
-		NormTex = M .. [[Textures\NormTex.tga]],
-		NormTex2 = M .. [[Textures\NormTex2.tga]],
-		Pause = M .. [[Textures\Pause.tga]],
-		Play = M .. [[Textures\Play.tga]],
-		Plus = M .. [[Textures\Plus.tga]],
-		PlusButton = M .. [[Textures\PlusButton.tga]],
-		PvPIcons = M .. [[Textures\PVP-Icons.blp]],
-		RaidIcons = M .. [[Textures\RaidIcons.blp]],
-		Reset = M .. [[Textures\Reset.tga]],
-		Resting = M .. [[Textures\Resting.tga]],
-		Resting1 = M .. [[Textures\Resting1.tga]],
-		RoleIcons = M .. [[Textures\RoleIcons.tga]],
-		SkullIcon = M .. [[Textures\SkullIcon.tga]],
-		Smooth = M .. [[Textures\Smooth.tga]],
-		Spark = M .. [[Textures\Spark.tga]],
-		StreamBackground = M .. [[Textures\StreamBackground]],
-		StreamCircle = M .. [[Textures\StreamCircle]],
-		StreamFrame = M .. [[Textures\StreamFrame]],
-		StreamSpark = M .. [[Textures\StreamSpark]],
-		Tank = M .. [[Textures\Tank.tga]]
+		Broom = M..[[Textures\Broom.blp]],
+		ChatEmojis = M..[[Textures\ChatEmojis]],
+		ChatLogos = M..[[Textures\ChatLogos]],
+		Close = M..[[Textures\Close.tga]],
+		Combat = M..[[Textures\Combat.tga]],
+		Copy = M..[[Textures\Copy.tga]],
+		Cross = M..[[Textures\Cross.tga]],
+		DPS = M..[[Textures\DPS.tga]],
+		ExitVehicle = M..[[Textures\ExitVehicle.tga]],
+		GlowTex = M..[[Textures\GlowTex.tga]],
+		Healer = M..[[Textures\Healer.tga]],
+		HelloKitty = M..[[Textures\HelloKitty.tga]],
+		HelloKittyChat = M..[[Textures\HelloKittyChat.tga]],
+		Highlight = M..[[Textures\Highlight.tga]],
+		HordeLogo = M..[[Textures\Horde-Logo.blp]],
+		Leader = M..[[Textures\Leader.tga]],
+		LevelUpTex = M..[[Textures\LevelUpTex.blp]],
+		Logo = M..[[Textures\Logo.tga]],
+		Mail = M..[[Textures\Mail.tga]],
+		Melli = M..[[Textures\Melli.tga]],
+		MelliDark = M..[[Textures\MelliDark.tga]],
+		MelliDarkRough = M..[[Textures\MelliDarkRough.tga]],
+		Minimalist = M..[[Textures\Minimalist.tga]],
+		Minus = M..[[Textures\Minus.tga]],
+		MinusButton = M..[[Textures\MinusButton.tga]],
+		Nameplates = M..[[Textures\Nameplates.blp]],
+		NormTex = M..[[Textures\NormTex.tga]],
+		NormTex2 = M..[[Textures\NormTex2.tga]],
+		Pause = M..[[Textures\Pause.tga]],
+		Play = M..[[Textures\Play.tga]],
+		Plus = M..[[Textures\Plus.tga]],
+		PlusButton = M..[[Textures\PlusButton.tga]],
+		PvPIcons = M..[[Textures\PVP-Icons.blp]],
+		RaidIcons = M..[[Textures\RaidIcons.blp]],
+		Reset = M..[[Textures\Reset.tga]],
+		Resting = M..[[Textures\Resting.tga]],
+		Resting1 = M..[[Textures\Resting1.tga]],
+		RoleIcons = M..[[Textures\RoleIcons.tga]],
+		SkullIcon = M..[[Textures\SkullIcon.tga]],
+		Smooth = M..[[Textures\Smooth.tga]],
+		Spark = M..[[Textures\Spark.tga]],
+		StreamBackground = M..[[Textures\StreamBackground]],
+		StreamCircle = M..[[Textures\StreamCircle]],
+		StreamFrame = M..[[Textures\StreamFrame]],
+		StreamSpark = M..[[Textures\StreamSpark]],
+		Tank = M..[[Textures\Tank.tga]]
 	}
 }
 
 LSM:Register("border", "ElvUI GlowBorder", E.Media.Textures.GlowTex)
+LSM:Register("border", "ElvUI GlowNaowh", E.Media.Textures.GlowNaowh)
 LSM:Register("font", "Continuum Medium", E.Media.Fonts.ContinuumMedium)
 LSM:Register("font", "Die Die Die!", E.Media.Fonts.DieDieDie, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
 LSM:Register("font", "Action Man", E.Media.Fonts.ActionMan)
 LSM:Register("font", "Expressway", E.Media.Fonts.Expressway, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
 LSM:Register("font", "PT Sans Narrow", E.Media.Fonts.PTSansNarrow, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
-LSM:Register("font", "Homespun", E.Media.Fonts.Homespun, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
+LSM:Register("font", "MontserratBlack", E.Media.Fonts.MontserratBlack, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
+LSM:Register("font", "MontserratBold", E.Media.Fonts.MontserratBold, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
+LSM:Register("font", "MontserratExtraBold", E.Media.Fonts.MontserratExtraBold, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
+LSM:Register("font", "MontserratExtraLight", E.Media.Fonts.MontserratExtraLight, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
+LSM:Register("font", "MontserratLight", E.Media.Fonts.MontserratLight, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
+LSM:Register("font", "MontserratMedium", E.Media.Fonts.MontserratMedium, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
+LSM:Register("font", "MontserratRegular", E.Media.Fonts.MontserratRegular, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
+LSM:Register("font", "MontserratSemiBold", E.Media.Fonts.MontserratSemiBold, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
+LSM:Register("font", "MontserratThin", E.Media.Fonts.MontserratThin, LSM.LOCALE_BIT_ruRU + LSM.LOCALE_BIT_western)
 LSM:Register("sound", "ElvUI Aska", E.Media.Sounds.SndIncMsg)
 LSM:Register("sound", "Awww Crap", E.Media.Sounds.AwwCrap)
 LSM:Register("sound", "BBQ Ass", E.Media.Sounds.BbqAss)
@@ -235,7 +265,6 @@ LSM:Register("sound", "Runaway Fast", E.Media.Sounds.RunFast)
 LSM:Register("sound", "Stop Running", E.Media.Sounds.StopRunningSlimeBall)
 LSM:Register("sound", "Warning", E.Media.Sounds.Warning)
 LSM:Register("sound", "Whisper Alert", E.Media.Sounds.Whisper)
-LSM:Register("statusbar", "Melli", E.Media.Textures.Melli)
 LSM:Register("statusbar", "ElvUI Gloss", E.Media.Textures.NormTex)
 LSM:Register("statusbar", "ElvUI Norm", E.Media.Textures.NormTex2)
 LSM:Register("statusbar", "Minimalist", E.Media.Textures.Minimalist)

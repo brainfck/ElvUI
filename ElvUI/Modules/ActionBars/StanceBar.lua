@@ -47,7 +47,7 @@ function AB:StyleShapeShift()
 		button = _G[buttonName]
 		icon = _G[buttonName.."Icon"]
 		cooldown = _G[buttonName.."Cooldown"]
-
+		icon:SetTexCoord(0.07, 0.93, 0.2, 0.8)
 		if i <= numForms then
 			texture, name, isActive, isCastable = GetShapeshiftFormInfo(i)
 
@@ -90,12 +90,12 @@ function AB:StyleShapeShift()
 			end
 
 			icon:SetTexture(texture)
-
 			if isCastable then
 				icon:SetVertexColor(1.0, 1.0, 1.0)
 			else
 				icon:SetVertexColor(0.4, 0.4, 0.4)
 			end
+			icon:SetTexCoord(0.07, 0.93, 0.2, 0.8)
 		end
 	end
 end
@@ -199,7 +199,7 @@ function AB:PositionAndSizeBarShapeShift()
 
 		button:SetParent(bar)
 		button:ClearAllPoints()
-		button:Size(size)
+		button:Size(size, size * 0.72)
 
 		if self.db.stanceBar.mouseover then
 			bar:SetAlpha(0)

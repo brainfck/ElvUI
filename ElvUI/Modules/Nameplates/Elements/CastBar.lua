@@ -12,7 +12,6 @@ local UnitCastingInfo = UnitCastingInfo
 local UnitChannelInfo = UnitChannelInfo
 local FAILED = FAILED
 local INTERRUPTED = INTERRUPTED
-
 local function resetAttributes(self)
 	self.casting = nil
 	self.channeling = nil
@@ -202,7 +201,6 @@ function NP:Update_CastBar(frame, event, unit)
 			if delta < 0 then
 				delta = 0
 			end
-
 			castBar.Name:SetText(name)
 			castBar.max = endTime - startTime
 			castBar.startTime = startTime

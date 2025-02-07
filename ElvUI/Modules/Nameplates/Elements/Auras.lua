@@ -127,7 +127,6 @@ function NP:SetAura(frame, guid, index, filter, isDebuff, visible)
 		button.caster = caster
 		button.filter = filter
 		button.isDebuff = isDebuff
-
 		local filterCheck = not frame.forceCreate
 		if not (frame.forceShow or frame.forceCreate) then
 			filterCheck = NP:AuraFilter(guid, button, name, texture, count, debuffType, duration, expiration, caster, spellID)
@@ -161,12 +160,16 @@ function NP:SetAura(frame, guid, index, filter, isDebuff, visible)
 			button:SetID(index)
 			button:Show()
 
+			--SetTexCoord to look like Naowh
+			button.icon:SetTexCoord(0.07, 0.93, 0.2, 0.8)
+
 			if isDebuff then
 				local color = (debuffType and DebuffTypeColor[debuffType]) or DebuffTypeColor.none
 				if button.name and (button.name == unstableAffliction or button.name == vampiricTouch) and E.myclass ~= "WARLOCK" then
 					self:StyleFrameColor(button, 0.05, 0.85, 0.94)
 				else
-					self:StyleFrameColor(button, color.r * 0.6, color.g * 0.6, color.b * 0.6)
+					--Changhed the border color to black so it looks like NaowhUI
+					self:StyleFrameColor(button, 0, 0, 0)
 				end
 			end
 
@@ -181,7 +184,7 @@ function NP:SetAura(frame, guid, index, filter, isDebuff, visible)
 	end
 end
 
-function NP:Update_AurasPosition(frame, db)
+function NP:Update_AurasPosition(frame, db, isDebuff)
 	local size = db.size + db.spacing
 	local anchor = E.InversePoints[db.anchorPoint]
 	local growthx = (db.growthX == "LEFT" and -1) or 1
@@ -194,8 +197,7 @@ function NP:Update_AurasPosition(frame, db)
 
 		local col = (i - 1) % cols
 		local row = floor((i - 1) / cols)
-
-		button:SetSize(db.size, db.size)
+		button:SetSize(db.size, db.size * 0.66)
 		button:ClearAllPoints()
 		button:SetPoint(anchor, frame, anchor, col * size * growthx, row * size * growthy)
 
@@ -292,7 +294,7 @@ function NP:UpdateElement_Auras(frame)
 		debuffs.visibleDebuffs = NP:UpdateElement_AuraIcons(debuffs, guid, debuffs.filter or "HARMFUL", db.perrow * db.numrows, true)
 
 		if #debuffs > debuffs.anchoredIcons then
-			self:Update_AurasPosition(debuffs, db)
+			self:Update_AurasPosition(debuffs, db, true)
 
 			debuffs.anchoredIcons = #debuffs
 		end
@@ -334,17 +336,30 @@ function NP:Construct_AuraIcon(parent, index)
 
 	local button = CreateFrame("StatusBar", "$parentButton"..index, parent)
 	NP:StyleFrame(button, true)
-
-	button:SetStatusBarTexture(E.media.blankTex)
-	button:SetStatusBarColor(0, 0, 0, 0)
-	button:SetOrientation("VERTICAL")
+	--removed because I already have the timer and it looks bad
+	--button:SetStatusBarTexture(E.media.blankTex)
+	--button:SetStatusBarColor(0, 0, 0, 0)
+	--button:SetOrientation("VERTICAL")
 
 	button.bg = button:CreateTexture()
 	button.bg:SetTexture(0, 0, 0, 0.5)
 
 	button.bg:SetPoint("TOPLEFT", button)
 	button.bg:SetPoint("BOTTOMRIGHT", button:GetStatusBarTexture(), "TOPRIGHT")
+	--Added Border to look like NaowhUI
+	if not button.oborder then
+		local border = CreateFrame("Frame", nil, button)
+		border:SetOutside(button, 1, 1)
+		border:SetFrameLevel(button:GetFrameLevel())
+		border:SetBackdrop({
+			edgeFile = [[Interface/Buttons/WHITE8X8]],
+			edgeSize = 1.2
+		});
 
+		border:SetBackdropBorderColor(0, 0, 0, 1);
+		button.oborder = border
+	end
+    
 	button.icon = button:CreateTexture(nil, "BORDER")
 	button.icon:SetTexCoord(unpack(E.TexCoords))
 	button.icon:SetAllPoints()

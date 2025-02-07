@@ -183,14 +183,13 @@ function NP:Configure_Glow(frame)
 
 		frame.Spark:SetVertexColor(r, g, b, a)
 		frame.Spark:ClearAllPoints()
-
 		if glowStyle == "style1" or glowStyle == "style5" or glowStyle == "style7" then
 			frame.Shadow:SetOutside(frame.IconOnlyChanged and frame.IconFrame or frame.Health, E:Scale(E.PixelMode and 6 or 8), E:Scale(E.PixelMode and 6 or 8))
 		elseif glowStyle == "style2" or glowStyle == "style6" or glowStyle == "style8" then
 			if healthIsShown then
 				local size = E.Border + 14
-				frame.Spark:SetPoint("TOPLEFT", frame.Health, -(size * 2), size)
-				frame.Spark:SetPoint("BOTTOMRIGHT", frame.Health, (size * 2), -size)
+				frame.Spark:SetPoint("TOPLEFT", frame.Health, -(size * 2), size * 0.6)
+				frame.Spark:SetPoint("BOTTOMRIGHT", frame.Health, (size * 2), -size * 0.6)
 			else
 				frame.Spark:SetPoint("TOPLEFT", frame.IconOnlyChanged and frame.IconFrame or frame.Name, -20, 8)
 				frame.Spark:SetPoint("BOTTOMRIGHT", frame.IconOnlyChanged and frame.IconFrame or frame.Name, 20, -8)
