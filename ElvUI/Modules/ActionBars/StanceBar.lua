@@ -199,7 +199,7 @@ function AB:PositionAndSizeBarShapeShift()
 
 		button:SetParent(bar)
 		button:ClearAllPoints()
-		button:Size(size, size * 0.72)
+		button:Size(size, size)
 
 		if self.db.stanceBar.mouseover then
 			bar:SetAlpha(0)

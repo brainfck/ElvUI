@@ -166,7 +166,7 @@ function AB:PositionAndSizeBar(barName)
 		lastColumnButton = bar.buttons[i-buttonsPerRow]
 		button:SetParent(bar)
 		button:ClearAllPoints()
-		button:Size(size, size*0.72)
+		button:Size(size, size)
 		button:SetAttribute("showgrid", 1)
 		if i == 1 then
 			local x, y
@@ -209,8 +209,6 @@ function AB:PositionAndSizeBar(barName)
 		end
 
 		self:StyleButton(button, nil, (self.LBFGroup or self.MSQGroup) and E.private.actionbar.lbf.enable and true or nil)
-		button.icon:SetTexCoord(0.07, 0.93, 0.2, 0.8)
-
 	end
 
 	if bar.db.enabled or not bar.initialized then

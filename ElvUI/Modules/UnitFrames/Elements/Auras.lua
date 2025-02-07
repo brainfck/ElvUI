@@ -380,8 +380,6 @@ function UF:PostUpdateAura(unit, button)
 	if button.needsUpdateCooldownPosition and (button.cd and button.cd.timer and button.cd.timer.text) then
 		UF:UpdateAuraCooldownPosition(button)
 	end
-
-	button.icon:SetTexCoord(0.07, 0.93, 0.2, 0.8)
 	local auras = button:GetParent();
 	button:SetHeight(((auras and auras.size) or 30) * 0.72)
 end

@@ -416,7 +416,7 @@ function A:ConfigureAuras(header, auraTable, weaponPosition)
 		button:ClearAllPoints()
 		button:SetPoint(point, header, cycle * wrapXOffset + tick * xOffset, cycle * wrapYOffset + tick * yOffset)
 
-		button:SetSize(size, size * 0.72)
+		button:SetSize(size, size)
 
 		if button.text then
 			local font = LSM:Fetch("font", self.db.font)

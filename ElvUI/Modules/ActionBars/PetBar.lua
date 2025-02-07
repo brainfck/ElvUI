@@ -183,7 +183,7 @@ function AB:PositionAndSizeBarPet()
 
 		button:SetParent(bar)
 		button:ClearAllPoints()
-		button:Size(size, size * 0.72)
+		button:Size(size, size)
 		autoCast:SetOutside(button, autoCastSize, autoCastSize)
 		shine:Size(size - E.Border*2)
 		button:SetAttribute("showgrid", 1)

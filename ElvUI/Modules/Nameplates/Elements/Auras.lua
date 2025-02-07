@@ -160,9 +160,6 @@ function NP:SetAura(frame, guid, index, filter, isDebuff, visible)
 			button:SetID(index)
 			button:Show()
 
-			--SetTexCoord to look like Naowh
-			button.icon:SetTexCoord(0.07, 0.93, 0.2, 0.8)
-
 			if isDebuff then
 				local color = (debuffType and DebuffTypeColor[debuffType]) or DebuffTypeColor.none
 				if button.name and (button.name == unstableAffliction or button.name == vampiricTouch) and E.myclass ~= "WARLOCK" then
