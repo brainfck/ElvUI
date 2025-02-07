@@ -7,7 +7,8 @@ assert(ElvUF, "ElvUI was unable to locate oUF.")
 --Lua functions
 local _G = _G
 --WoW API / Variables
-local MAX_BOSS_FRAMES = MAX_BOSS_FRAMES
+-- local MAX_BOSS_FRAMES = MAX_BOSS_FRAMES
+local MAX_BOSS_FRAMES = 6
 
 local BossHeader = CreateFrame("Frame", "BossHeader", UIParent)
 BossHeader:SetFrameStrata("LOW")
