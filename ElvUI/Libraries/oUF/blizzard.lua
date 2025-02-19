@@ -6,7 +6,7 @@ local MAX_ARENA_ENEMIES = MAX_ARENA_ENEMIES or 5
 
 -- sourced from FrameXML/TargetFrame.lua
 -- local MAX_BOSS_FRAMES = MAX_BOSS_FRAMES or 4
-local MAX_BOSS_FRAMES = 6
+local MAX_BOSS_FRAMES = 9
 
 -- sourced from FrameXML/PartyMemberFrame.lua
 local MAX_PARTY_MEMBERS = MAX_PARTY_MEMBERS or 4

@@ -20,7 +20,7 @@ local GetInstanceInfo = GetInstanceInfo
 local UnregisterStateDriver = UnregisterStateDriver
 local RegisterStateDriver = RegisterStateDriver
 -- local MAX_BOSS_FRAMES = MAX_BOSS_FRAMES
-local MAX_BOSS_FRAMES = 6
+local MAX_BOSS_FRAMES = 9
 
 local _, ns = ...
 local ElvUF = ns.oUF
